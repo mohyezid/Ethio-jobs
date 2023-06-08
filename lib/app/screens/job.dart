@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:job_search/app/bloc/bookmark_bloc/bookmark_bloc.dart';
 import 'package:job_search/app/modals/JobModals.dart';
 
+
 import 'package:page_transition/page_transition.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
