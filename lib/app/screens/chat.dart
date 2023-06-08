@@ -6,6 +6,7 @@ import '../common/common.dart';
 import '../common/widgets.dart';
 import '../util/utils.dart';
 
+
 class Chat extends StatefulWidget {
   final String recipient;
   final String lastChat;
