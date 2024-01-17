@@ -10,6 +10,7 @@ import 'package:job_search/core/data.dart';
 
 import 'app/common/common.dart';
 
+
 void main() {
   runApp(MyApp());
 }
