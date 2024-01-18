@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:job_search/app/bloc/login_bloc/login_bloc.dart';
@@ -67,7 +68,7 @@ class _LoginFormState extends State<LoginForm> {
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black.withOpacity(0.12)),
                 ),
-                hintText: "Username or Email",
+                hintText: 'hint'.tr(),
                 hintStyle: TextStyle(
                   color: kBlack.withOpacity(0.5),
                   fontWeight: FontWeight.w500,
@@ -101,7 +102,7 @@ class _LoginFormState extends State<LoginForm> {
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black.withOpacity(0.12)),
                 ),
-                hintText: 'Password',
+                hintText: 'pass'.tr(),
                 hintStyle: TextStyle(
                   color: kBlack.withOpacity(0.5),
                   fontWeight: FontWeight.w500,
@@ -132,7 +133,7 @@ class _LoginFormState extends State<LoginForm> {
             child: LoginButton(
               color: kBlue,
               textColor: kWhite,
-              text: 'Login to continue',
+              text: 'log'.tr(),
               onPressed: () {
                 BlocProvider.of<LoginBloc>(context)
                     .add(Loginacc(email: email.text, pass: password.text));
@@ -163,7 +164,7 @@ class _LoginFormState extends State<LoginForm> {
               child: CustomButton(
                 color: kBlack,
                 textColor: kWhite,
-                text: 'Create a Ethio-Bestin Account',
+                text: "signup".tr(),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(
                     builder: (context) {

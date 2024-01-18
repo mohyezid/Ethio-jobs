@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:job_search/app/bloc/login_bloc/login_bloc.dart';
 import 'package:job_search/app/screens/home.dart';
+import 'package:job_search/core/change_localization.dart';
 import '../../../core/constants.dart';
 import 'widgets/custom_clippers/index.dart';
 import 'widgets/header.dart';
@@ -96,6 +98,7 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
     super.dispose();
   }
 
+  String _selectedLanguage = 'English';
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
@@ -151,6 +154,50 @@ class _LoginState extends State<Login> with SingleTickerProviderStateMixin {
                     child: Column(
                       children: <Widget>[
                         Header(animation: _headerTextAnimation),
+                        Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 55),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text("change_language".tr()),
+                              Container(
+                                color: Colors.white,
+                                // Adjust the width according to your requirement
+                                child: DropdownButton<String>(
+                                  value: _selectedLanguage,
+                                  icon: Icon(Icons.arrow_drop_down),
+                                  iconSize: 24,
+                                  elevation: 16,
+                                  style: TextStyle(color: Colors.black),
+                                  underline: Container(
+                                    height: 1,
+                                    color: Colors.black,
+                                  ),
+                                  onChanged: (value) {
+                                    if (value != _selectedLanguage) {
+                                      ChangeLocalization.changeLanguage(
+                                          context);
+                                    }
+                                    setState(() {
+                                      _selectedLanguage = value!;
+                                    });
+                                  },
+                                  items: <String>[
+                                    'English',
+                                    'አማርኛ'
+                                  ] // Replace with your desired languages
+                                      .map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                         SizedBox(
                           height: 210,
                         ),

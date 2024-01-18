@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/constants.dart';
@@ -27,12 +28,14 @@ class Header extends StatelessWidget {
           FadeSlideTransition(
             animation: animation,
             additionalOffset: 0.0,
-            child: Text(
-              'Welcome to Ethio Bestin Job',
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5!
-                  .copyWith(color: kBlack, fontWeight: FontWeight.bold),
+            child: FittedBox(
+              child: Text(
+                "wel".tr(),
+                style: Theme.of(context)
+                    .textTheme
+                    .headline5!
+                    .copyWith(color: kBlack, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
           const SizedBox(height: kSpaceS),
@@ -40,7 +43,7 @@ class Header extends StatelessWidget {
             animation: animation,
             additionalOffset: 16.0,
             child: Text(
-              'Find Your dream and enjoy your passion.',
+              'subwel'.tr(),
               style: Theme.of(context)
                   .textTheme
                   .subtitle1!

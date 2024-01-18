@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:job_search/app/bloc/bookmark_bloc/bookmark_bloc.dart';
 import 'package:job_search/app/bloc/login_bloc/login_bloc.dart';
 import 'package:job_search/app/modals/JobModals.dart';
@@ -10,9 +12,17 @@ import 'package:job_search/core/data.dart';
 
 import 'app/common/common.dart';
 
-
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  runApp(EasyLocalization(
+      supportedLocales: const [
+        Locale('en', 'US'),
+        Locale('am', 'ET'),
+      ],
+      fallbackLocale: const Locale("en", "US"),
+      path: 'assets/translations',
+      child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -33,6 +43,9 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: Common().appName,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
           theme: ThemeData(
             primarySwatch: Colors.blue,
             visualDensity: VisualDensity.adaptivePlatformDensity,
